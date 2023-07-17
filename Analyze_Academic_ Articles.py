@@ -113,6 +113,6 @@ if __name__ == '__main__':
     output = [p.get() for p in results]
     print(datetime.now().time())
     df = pd.DataFrame(output, columns=['year', "article_name", 'stats'])
-    df.to_csv(r"D:\Danny\Baseline\JBF\JBF_stats.csv", index=False)
+    df.to_csv(DesirePath, index=False)
     print (df.shape)
     
