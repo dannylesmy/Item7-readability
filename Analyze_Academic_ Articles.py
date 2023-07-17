@@ -91,7 +91,8 @@ if __name__ == '__main__':
     #unzip = unzip_file(rootdir)
     pool = mp.Pool(processes=36)
     files = create_list(rootdir+"\data") # list of pdf files
-    files = glob.glob("D:\Danny\Baseline\JBF\Article\*")
+    files = glob.glob("pathofpdffiles\*")
+    # remove none academic articles i.e. call of paper, publisher's note etc.
     files = [file for file in files if "Call-for-" not in file]
     files = [file for file in files if "Editor" not in file]
     files = [file for file in files if not re.search(r"-?Index(_|-)\d{4}", file)]
