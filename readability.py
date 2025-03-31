@@ -1,5 +1,8 @@
+# based on py-readabilty-metrics package https://github.com/cdimascio/py-readability-metrics
+
 import re
 import nltk
+import math
 from nltk.tokenize import sent_tokenize
 
 
@@ -149,11 +152,7 @@ class Readability:
     def __init__(self, text):
         self._analyzer = Analyzer()
         self._statistics = self._analyzer.analyze(text)
-
-    
-    def flesch(self):
-        """Calculate Flesch Reading Ease score."""
-        return Flesch(self._statistics).score()
+   
 
     def flesch_kincaid(self):
         """Calculate Flesch-Kincaid Grade Level."""
@@ -162,9 +161,19 @@ class Readability:
     def gunning_fog(self):
         """Calculate Gunning Fog score."""
         return GunningFog_50(self._statistics).score()
+        
+    def ari(self):
+        """Calculate Automated Readability Index (ARI)."""
+        return ARI(self._statistics).score()
 
-
-
+    def coleman_liau(self):
+        """Calculate Coleman Liau Index."""
+        return ColemanLiau(self._statistics).score()
+        
+    def linsear_write(self):
+        """Calculate Linsear Write."""
+        return LinsearWrite(self._statistics).score()
+        
     def statistics(self):
         return {
             'num_letters': self._statistics.num_letters,
@@ -205,3 +214,125 @@ class GunningFog_50:
         else:
             return 'college_graduate'
 
+class FleschKincaid:
+    def __init__(self, stats, min_words=50):
+        self._stats = stats
+        if stats.num_words < min_words:
+            raise ValueError('50 words required.')
+
+    def score(self):
+        score = self._score()
+        return Result(
+            score=score,
+            grade_level=self._grade_level(score)
+        )
+
+    def _score(self):
+        stats = self._stats
+        return (0.38 * stats.avg_words_per_sentence +
+                11.8 * stats.avg_syllables_per_word) - 15.59
+
+    def _grade_level(self, score):
+        return str(round(score))
+        
+class LinsearWrite:
+    def __init__(self, stats):
+        self._stats = stats
+        if stats.num_words < 50:
+            raise ValueError('50 words required.')
+
+    def score(self):
+        score = self._score()
+        return Result(
+            score=score,
+            grade_level=self._grade_level(score)
+        )
+
+    def _score(self):
+        s = self._stats
+        num_easy_words = s.num_words - s.num_poly_syllable_words
+        num_hard_words = s.num_poly_syllable_words
+        inter_score = (num_easy_words + (num_hard_words * 3)) / s.num_sentences
+        if inter_score > 20:
+            return inter_score / 2
+        return (inter_score - 2) / 2
+
+    def _grade_level(self, score):
+        return str(round(score))
+        
+        
+class ColemanLiau:
+    def __init__(self, stats):
+        self._stats = stats
+        if stats.num_words < 50:
+            raise ValueError('50 words required.')
+
+    def score(self):
+        score = self._score()
+        return Result(
+            score=score,
+            grade_level=self._grade_level(score)
+        )
+
+    def _score(self):
+        s = self._stats
+        scalar = s.num_words / 100
+        letters_per_100_words = s.num_letters / scalar
+        sentences_per_100_words = s.num_sentences / scalar
+        return 0.0588 * letters_per_100_words - \
+            0.296 * sentences_per_100_words - 15.8
+
+    def _grade_level(self, score):
+        return str(round(score))
+        
+class ARI:
+    def __init__(self, stats):
+        self._stats = stats
+        if stats.num_words < 50:
+            raise ValueError('50 words required.')
+
+    def score(self):
+        score = self._score()
+        return Result(
+            score=score,
+            grade_level=", ".join(self._grade_level(score))),
+            #ages=self._ages(score))
+
+    def _score(self):
+        s = self._stats
+        letters_per_word = s.num_letters / s.num_words
+        words_per_sent = s.num_words / s.num_sentences
+        return 4.71 * letters_per_word + 0.5 * words_per_sent - 21.43
+
+    def _grade_level(self, score):
+        score = math.ceil(score)
+        if score <= 1:
+            return ['K']
+        elif score <= 2:
+            return ['1', '2']
+        elif score <= 3:
+            return ['3']
+        elif score <= 4:
+            return ['4']
+        elif score <= 5:
+            return ['5']
+        elif score <= 6:
+            return ['6']
+        elif score <= 7:
+            return ['7']
+        elif score <= 8:
+            return ['8']
+        elif score <= 9:
+            return ['9']
+        elif score <= 10:
+            return ['10']
+        elif score <= 11:
+            return ['11']
+        elif score <= 12:
+            return ['12']
+        elif score <= 13:
+            return ['college']
+        else:
+            return ['college_graduate']
+
+    
