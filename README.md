@@ -32,7 +32,9 @@ Item 7 (10-K Reports): Available for download from [Zenodo](https://zenodo.org/r
 
 Credit Card Agreement Database: Freely available at the Consumer Financial Protection Bureau https://www.consumerfinance.gov/credit-cards/agreements/archive/ .
 
-The Telegraph Newspaper Corpus as well as the WSJ: Not available, as it is no longer free.
+The Telegraph Newspaper Corpus as well as the WSJ: Not available, as it is not free.
+
+Reddit: available for download from https://zenodo.org/records/15118235 
 
 Academic Articles: Not included, as they were obtained through institutional subscriptions and cannot be shared publicly. 
 
