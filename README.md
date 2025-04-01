@@ -1,9 +1,41 @@
 # Item7-readability
 this repository contains code for calculating the readability of "Management’s Discussion and Analysis of Financial Condition and Results of Operations" from the annual report
 
-Employing Item 7 of the 10-K reports over a 26-year period, this study examines the evolving readability of financial reporting. Using a dataset of more than 200,000 reports retrieved from SEC EDGAR filings, we observe a noticeable decline in readability over time. Using the Fog Index as a measure, we can see that each year, the number of years of schooling required to comprehend a given text grows by over a month. Financial reports are becoming increasingly inaccessible to a significant segment of the population as a result of this trend. Additionally, we incorporate data from diverse corpora encompassing almost 10 million documents, offering a broader understanding of financial text complexity. The Wall Street Journal stands as a notable exception to our finding that financial texts, in general, do not demonstrate a significant increase in complexity over time and may even exhibit a tendency to decrease in complexity.
+Overview
 
-The following figure represents the core findings of our study, providing a comprehensive visualization of the temporal evolution of the Fog index across various corpora with a regression fitted line for CI and P-value calculation. It serves as a powerful tool for illustrating the changes in text complexity over time. Of particular significance is the growth observed in the Fog index for Item 7. Starting at a score of 17.6 in 1996, it has steadily increased to 20.19 in 2022, at an average rate of 0.09 per year. Our results emphasize the importance of addressing the increasing complexity in financial reporting, as it potentially hampers effective communication between corporations and investors. By quantifying the readability using the Fog index, our study provides tangible evidence of the gradual decline in accessibility over the years. 
+This repository contains code for calculating the readability of the "Management’s Discussion and Analysis of Financial Condition and Results of Operations" (Item 7) from annual reports.
+
+Employing Item 7 of the 10-K reports over a 26-year period, this study examines the evolving readability of financial reporting. Using a dataset of more than 200,000 reports retrieved from SEC EDGAR filings, we observe a noticeable decline in readability over time.
+
+Key Findings
+
+Using the Fog Index as a readability measure, we find that the number of years of schooling required to comprehend Item 7 has increased steadily. Specifically:
+
+In 1996, the average Fog Index score for Item 7 was 17.6.
+
+By 2022, the score had increased to 20.19.
+
+This equates to an average annual increase of 0.09 points, meaning each year, the required reading level grows by approximately one additional month of education.
+
+This trend suggests that financial reports are becoming increasingly inaccessible to a significant portion of the population, potentially hindering effective communication between corporations and investors.
+
+Comparative Analysis
+
+To contextualize these findings, we analyze financial text complexity across multiple corpora, totaling nearly 10 million documents. A key exception to the observed trend is the Wall Street Journal, which does not exhibit a significant increase in complexity over time and may even show a slight decline.
+
+The following figure illustrates the core findings, visualizing the temporal evolution of the Fog Index across different corpora, including a regression-fitted line with confidence intervals and p-values to quantify statistical significance.
+
+Data Availability
+
+While we provide code and methodologies, access to certain datasets is restricted due to licensing and subscription constraints:
+
+Item 7 (10-K Reports): Available for download from Zenodo.
+
+Credit Card Agreement Database: Freely available at the Consumer Financial Protection Bureau.
+
+The Telegraph Newspaper Corpus as well as the WSJ: Not available, as it is no longer free.
+
+Academic Articles: Not included, as they were obtained through institutional subscriptions and cannot be shared publicly. 
 
 
 ![image](https://github.com/dannylesmy/Item7-readability/assets/63964315/3c4a4af1-446d-4937-958f-090bb742b569)
