@@ -1,3 +1,4 @@
+# ~ 33 hours to process all agreements 
 import glob
 import pandas as pd
 import csv
