@@ -1,5 +1,5 @@
 # Item7-readability
-this repository contains code for calculating the readability of "Management’s Discussion and Analysis of Financial Condition and Results of Operations" from the annual report
+this repository contains code and data for calculating the readability of "Management’s Discussion and Analysis of Financial Condition and Results of Operations" from the annual report
 
 ## Overview
 
