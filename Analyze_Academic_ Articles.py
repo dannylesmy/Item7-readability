@@ -1,3 +1,4 @@
+#it took approximatley 50 hours tp process all articles
 import glob
 import pandas as pd
 import numpy as np
