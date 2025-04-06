@@ -1,5 +1,5 @@
-# Not working anymore. 
-# The newspaper change its policy and now one need to pay for downloading the archive (2022)
+# as of 2024 this code cannot be used as is because 
+# The newspaper change its policy and now one need to pay for downloading the archive 
 
 
 import scrapy, string, re
