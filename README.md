@@ -3,7 +3,7 @@ this repository contains code and data for calculating the readability of "Manag
 
 ## Overview
 
-Employing Item 7 of the 10-K reports over a 26-year period, this study examines the evolving readability of financial reporting. Using a dataset of more than 200,000 reports retrieved from SEC EDGAR filings, we observe a noticeable decline in readability over time.
+Employing Item 7 of the 10-K reports over a 26-year period, this study examines the evolving readability of financial reporting. Using a dataset of more than 200,000 reports retrieved from SEC EDGAR filings via EDGAR-CORPUS (https://github.com/lefterisloukas/edgar-crawler), we observe a noticeable decline in readability over time.
 
 ## Key Findings
 
