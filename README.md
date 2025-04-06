@@ -3,8 +3,6 @@ this repository contains code for calculating the readability of "Management’s
 
 ## Overview
 
-This repository contains code for calculating the readability of the "Management’s Discussion and Analysis of Financial Condition and Results of Operations" (Item 7) from annual reports.
-
 Employing Item 7 of the 10-K reports over a 26-year period, this study examines the evolving readability of financial reporting. Using a dataset of more than 200,000 reports retrieved from SEC EDGAR filings, we observe a noticeable decline in readability over time.
 
 ## Key Findings
